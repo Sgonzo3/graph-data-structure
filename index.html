@@ -31,7 +31,8 @@
         
         class Graph {
             constructor() {
-                this.adjacencyList = {}
+                // this.adjacencyList = {}
+                this.adjacencyList = new Set();
             }
 
             addVertex(vertex){
@@ -78,7 +79,6 @@
                 while(stack){
                     const current = stack.pop();
                     if(visited[current]) return;
-                    visited.
                 }
                 for(let each in this.adjacencyList){
 
