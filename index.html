@@ -37,6 +37,7 @@
             addVertex(vertex){
                 if(vertex) {
                     this.adjacencyList[vertex] = [];
+                    this.adjacencyList[vertex] = new Set();
                 }
             }
 
@@ -44,8 +45,8 @@
                 // should check for valid keys in vertex1 and vertex2
                 if(!this.adjacencyList[vertex1]) this.addVertex(vertex1);
                 if(!this.adjacencyList[vertex2]) this.addVertex(vertex2);
-                this.adjacencyList[vertex1].push(vertex2);
-                this.adjacencyList[vertex2].push(vertex1);
+                this.adjacencyList[vertex1].add(vertex2);
+                this.adjacencyList[vertex2].add(vertex1);
             }
             print(){
 
@@ -55,8 +56,12 @@
                 if(!this.adjacencyList[vertex1] || !this.adjacencyList[vertex2]) {
                     return "invalid vertexes to delete";
                 }
-                this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(item => item !== vertex2);
-                this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(item => item !== vertex1);
+                // this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(item => item !== vertex2);
+                this.adjacencyList[vertex1].delete(vertex2)
+
+                // this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(item => item !== vertex1);
+                this.adjacencyList[vertex2].delete(vertex1)
+
                 return this.adjacencyList;
             }
 
@@ -66,12 +71,22 @@
                 return this.adjacencyList;
             }
 
-            depthFirstSearch(){
+            depthFirstSearchInterative(startVertex){
+                let stack = [startVertex];
+                let visited = {}; // can this be a set?
+                let result = [];
+                while(stack){
+                    const current = stack.pop();
+                    if(visited[current]) return;
+                    visited.
+                }
+                for(let each in this.adjacencyList){
 
+                }
             }
 
             breadthFirstSearch(){
-                
+
             }
         }
 
